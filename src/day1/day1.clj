@@ -32,6 +32,6 @@
 (defn fuel-mods-tanks
   "Calculate required mass of all fuel with fuel appended"
   [module-masses]
-  (map fuel-mods-tanks (get-mods-masses module-masses)))
+  (map fuel-mod-tanks (get-mods-masses module-masses)))
 
 (reduce + (fuel-mods-tanks "src/day1/input-data.txt"))
