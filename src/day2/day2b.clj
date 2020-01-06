@@ -7,14 +7,16 @@
   (mapv #(Long/parseLong %) (str/split (slurp path) #",")))
 
 (def memory (get-input "src/day2/input-data.txt"))
-(defn change-memory [c noun verb]
+(defn change-memory 
+  [c noun verb]
   (-> c
       (assoc 1 noun)
       (assoc 2 verb)))
 
 (def ops {1 +, 2 *, 99 :halt})
 
-(defn run-op [memory instruction]
+(defn run-op 
+  [memory instruction]
   (let [[opcode, ix0, ix1, out-ix] instruction
         op (ops opcode)
         val0 (get memory ix0)
