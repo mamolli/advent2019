@@ -75,6 +75,6 @@
 
 ; TODO: this is clunky 
 (->> intersections
-     (map (fn [intersection] (map (fn [cable] (index-of intersection cable)) reduced-cables)))
+     (map #(map (fn [cable] (index-of % cable)) reduced-cables))
      (map #(+ (first %) (second %)))
      (apply min))

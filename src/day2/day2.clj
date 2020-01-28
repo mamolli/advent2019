@@ -2,8 +2,6 @@
   (:require [clojure.string :as str])
   (:require [clojure.core.reducers :as r]))
 
-  
-
 (defn get-input
   "Get codes from path"
   [path]
@@ -32,7 +30,6 @@
     (if (= op :halt)
       memory
       (assoc memory out-ix (op val0 val1)))))
-    
 
 (count (partition-all 4 memory))
 ; not allowing for turing completeness?
@@ -52,10 +49,8 @@
         verb (range 100)]
     [noun verb]))
 
-
 (defn get-0-val-from-processing [noun verb]
   [(first (process-memory (change-memory memory noun verb))) noun verb])
-
 
 ; SOLUTION A
 (first (process-memory memory-A))
@@ -63,5 +58,3 @@
 ; SOLUTION B
 (first
   (filter #(= 19690720 (get % 0)) (map #(apply get-0-val-from-processing %) test-values)))
-
-
