@@ -4,7 +4,6 @@
   (:require [clojure.math.numeric-tower :as math]))
 
 ;PART 1
-
 (def initial [0 0])
 (def directions {"R" [0 identity], "L" [0 -], "U" [1 identity], "D" [1 -]})
 
@@ -39,7 +38,6 @@
       [x y])))
 
 (defn reduce-points' [cable-delta-data]
-  ; (reduce #(conj %1 (line (last %1) %2)) [[0 0]] delta-data))
   (reduce #(concat %1 (rest (line (last %1) %2))) [initial] cable-delta-data))
 
 (defn split-delta-ins
@@ -56,7 +54,6 @@
        (map #(str/split % #","))
        (map #(map split-delta-ins %))
        (map #(reduce-points' %))))
-
 
 (def intersections (disj (apply set/intersection (mapv set reduced-cables)) initial))
 
